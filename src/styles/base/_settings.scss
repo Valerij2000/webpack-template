@@ -1,0 +1,14 @@
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.img {
+  max-width: 100%;
+  object-fit: cover;
+  height: auto;
+}

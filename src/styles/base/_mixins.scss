@@ -1,0 +1,64 @@
+// Stop Scroll
+@mixin stop-scroll {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+// Rem
+@function rem($px) {
+  $result: math.div($px, 16) + rem;
+  @return $result;
+}
+
+// Em
+@function em($px, $current: 16) {
+  $result: math.div($px, $current) + em;
+  @return $result;
+}
+
+// Grids
+@mixin gridCards($type: fit, $min: 280px, $max: 1fr, $gap: 30px) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(auto-#{$type}, minmax($min, $max));
+}
+
+// Adaptive property 
+// ? USE FAQ:
+// @include adaptiveValue("font-size", 90, 20);
+// @include adaptiveValue("font-size", 90, 20, 1920, 320); where 1920 & 320 - breakpoints;
+@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
+  @if ($widthFrom==$containerWidth and $maxWidthContainer==0) {
+    $widthFrom: $maxWidth;
+  }
+
+  $widthFromMedia: em($widthFrom);
+  $widthToMedia: em($widthTo);
+
+  // Source: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+  $slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+  $yIntersection: -$widthTo * $slope+$minSize;
+  $flyValue: #{rem($yIntersection)}" + "#{$slope * 100}vw;
+
+  $propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+
+  @if $widthFrom==$containerWidth or $widthFrom==$maxWidth or $keepSize==1 or $keepSize==2 {
+    @media (min-width: $widthFromMedia) {
+      #{$property}: rem($startSize);
+    }
+  }
+
+  @media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+    #{$property}: $propertyValue;
+  }
+
+  @if $widthTo==$minWidth or $keepSize==1 or $keepSize==3 {
+    @media (max-width: $widthToMedia) {
+      #{$property}: rem($minSize);
+    }
+  }
+}
