@@ -1,23 +1,31 @@
 # WEBPACK
 
-## Команды
+## Сommands
 
-### Запуск сервера для разработки
+### Launching a development server
 ```shell
 npm run dev
 ```
 
-### Сборка проекта с оптимизацией
+### Building a project with optimization
 ```shell
 npm run build
 ```
 
-### Очистка папки dist
+### Cleaning up the dist folder
 ```shell
 npm run clear
 ```
 
-### Сборка проекта без оптимизации
+### Building a project without optimization
 ```shell
 npm run build-dev
 ```
+
+---
+
+## Project structure
+
+- src/styles/base ... this project service **scss** files
+- src/styles/partials ... this project custom **scss** files
+- src/js/app.js ... this general application **JS** file
