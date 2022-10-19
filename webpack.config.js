@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -6,7 +7,8 @@ const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
-
+let hbsPages = fs.readdirSync('src').filter(fileName => fileName.endsWith('.hbs')).map(el => el.slice(0, -4));   
+    
 module.exports = {
   mode,
   target,
@@ -31,11 +33,11 @@ module.exports = {
       filename: 'css/[name].[contenthash].css',
     }),
   ].concat(
-    ['index', 'about', 'contact'].map(page => {
+    hbsPages.map(page => {
       return new HtmlWebpackPlugin({
         inject: 'body',
         filename: `${page}.html`,
-        template: path.resolve(__dirname, 'src', `views/${page}.hbs`),
+        template: path.resolve(__dirname, 'src', `${page}.hbs`),
       })
     })
   ),
@@ -52,7 +54,7 @@ module.exports = {
             loader: 'string-replace-loader',
             options: {
               search: '@img',
-              replace: '../img',
+              replace: './img',
               flags: 'g'
             }
           },

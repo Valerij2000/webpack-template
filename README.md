@@ -35,5 +35,11 @@ npm run build-dev
 ## How use Handlebars?
 
 - create all interface development files in the **views** folder with extension .hbs
-- **{{>header}} , {{>footer}}** ... etc use components
-- pages also create in views folders, register pages in file **webpack.config.js/line31** and **reload devServer**
+- **{{>views/header}} , {{>views/footer}}** ... etc use components
+- each creation/delete web-site page must be accompanied by a restart of the server **npm run dev**
+
+---
+
+## How use Alias?
+
+- use alias for image source **@img/banner.png**
