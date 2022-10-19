@@ -15,6 +15,9 @@ module.exports = {
     port: 3000,
     open: true,
     hot: true,
+    watchFiles: [
+      `src/**/*.hbs`,
+    ],
   },
   entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'webpack/index.js')],
   output: {
@@ -24,15 +27,37 @@ module.exports = {
     assetModuleFilename: 'assets/[name][ext]'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
-    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
     }),
-  ],
+  ].concat(
+    ['index', 'about', 'contact'].map(page => {
+      return new HtmlWebpackPlugin({
+        inject: 'body',
+        filename: `${page}.html`,
+        template: path.resolve(__dirname, 'src', `views/${page}.hbs`),
+      })
+    })
+  ),
   module: {
-    rules: [
+    rules: [{
+        test: /\.hbs$/i,
+        use: [{
+            loader: 'handlebars-loader',
+            options: {
+              inlineRequires: '\/img\/'
+            },
+          },
+          {
+            loader: 'string-replace-loader',
+            options: {
+              search: '@img',
+              replace: '../img',
+              flags: 'g'
+            }
+          },
+        ],
+      },
       {
         test: /\.html$/i,
         loader: 'html-loader',
@@ -50,6 +75,14 @@ module.exports = {
               },
             },
           },
+          {
+            loader: 'string-replace-loader',
+            options: {
+              search: '@img',
+              replace: '../img',
+              flags: 'g'
+            }
+          },
           'group-css-media-queries-loader',
           'sass-loader',
         ],
@@ -62,30 +95,28 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpe?g|png|webp|gif|svg)$/i,
-        use: [
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-              },
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              webp: {
-                quality: 75
-              },
-            }
+        test: /\.(jpe?g|png|webp|gif|svg|ico)$/i,
+        use: [{
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {
+              progressive: true,
+            },
+            optipng: {
+              enabled: false,
+            },
+            pngquant: {
+              quality: [0.65, 0.90],
+              speed: 4
+            },
+            gifsicle: {
+              interlaced: false,
+            },
+            webp: {
+              quality: 75
+            },
           }
-        ],
+        }],
         type: 'asset/resource',
       },
       {
@@ -99,5 +130,10 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    alias: {
+      '@img': path.join(__dirname, 'src', 'img'),
+    },
   },
 };
