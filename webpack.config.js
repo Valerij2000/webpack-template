@@ -18,13 +18,13 @@ module.exports = {
     open: true,
     hot: true,
     watchFiles: [
-      `src/**/*.hbs`,
+      `src/**/*.hbs`
     ],
   },
   entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'webpack/index.js')],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    clean: false,
     filename: 'js/[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]'
   },
@@ -32,7 +32,7 @@ module.exports = {
     ...hbsPages.map(page => new HtmlWebpackPlugin({
       minify: true,
       filename: `${page}.html`,
-      template: path.resolve(__dirname, 'src', `${page}.hbs`),      
+      template: path.resolve(__dirname, 'src', `${page}.hbs`),
     })),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
@@ -51,7 +51,7 @@ module.exports = {
             loader: 'string-replace-loader',
             options: {
               search: '@img',
-              replace: './img',
+              replace: path.resolve(__dirname, 'src', `img`),
               flags: 'g'
             }
           },
@@ -85,6 +85,10 @@ module.exports = {
           'group-css-media-queries-loader',
           'sass-loader',
         ],
+      },
+      {
+        test: /\.scss$/,
+        use: 'webpack-import-glob-loader'
       },
       {
         test: /\.woff2?$/i,
