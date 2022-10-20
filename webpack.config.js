@@ -7,8 +7,8 @@ const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
-let hbsPages = fs.readdirSync('src').filter(fileName => fileName.endsWith('.hbs')).map(el => el.slice(0, -4));   
-    
+const hbsPages = fs.readdirSync('src').filter(fileName => fileName.endsWith('.hbs')).map(el => el.slice(0, -4));
+
 module.exports = {
   mode,
   target,
@@ -29,18 +29,15 @@ module.exports = {
     assetModuleFilename: 'assets/[name][ext]'
   },
   plugins: [
+    ...hbsPages.map(page => new HtmlWebpackPlugin({
+      minify: true,
+      filename: `${page}.html`,
+      template: path.resolve(__dirname, 'src', `${page}.hbs`),      
+    })),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
     }),
-  ].concat(
-    hbsPages.map(page => {
-      return new HtmlWebpackPlugin({
-        inject: 'body',
-        filename: `${page}.html`,
-        template: path.resolve(__dirname, 'src', `${page}.hbs`),
-      })
-    })
-  ),
+  ],
   module: {
     rules: [{
         test: /\.hbs$/i,
