@@ -2,8 +2,6 @@
 
 ## Node.js major v16 or later
 
----
-
 ## Сommands
 
 ### Launching a development server
