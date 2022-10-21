@@ -19,11 +19,6 @@ npm run build
 npm run clear
 ```
 
-### Building a project without optimization
-```shell
-npm run build-dev
-```
-
 ---
 
 ## Project structure
