@@ -4,6 +4,11 @@
 
 ## Сommands
 
+### Npm install
+```shell
+npm i
+```
+
 ### Launching a development server
 ```shell
 npm run dev
