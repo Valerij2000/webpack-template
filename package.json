@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack --node-env=production",
-    "clear": "rm -rf ./dist",
-    "build-dev": "webpack"
+    "clear": "rm -rf ./dist"
   },
   "keywords": [],
   "author": "",
