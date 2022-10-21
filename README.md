@@ -31,7 +31,7 @@ npm run clear
 
 ## How use Handlebars?
 
-- create all interface development files in the **views** folder with extension .hbs
+- create all interface development files in the **views** folder with extension **.hbs**
 - Example use import .hbs components: **{{>views/header}} , {{>views/footer}}** ... etc 
 - each creation/delete web-site page must be accompanied by a restart of the server:
 ```shell
