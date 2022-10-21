@@ -33,7 +33,7 @@ npm run clear
 
 - create all interface development files in the **views** folder with extension .hbs
 - **{{>views/header}} , {{>views/footer}}** ... etc use components
-- each creation/delete web-site page must be accompanied by a restart of the server
+- each creation/delete web-site page must be accompanied by a restart of the server:
 ```shell
 npm run dev
 ```
