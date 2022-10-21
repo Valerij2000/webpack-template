@@ -42,4 +42,5 @@ npm run dev
 
 ## How use Alias?
 
-- use alias for image source **@img/banner.png**
+- use alias for image source:
+< <img src="@img/banner.png" alt=""> >
