@@ -33,8 +33,17 @@ npm run clear
 
 - [FAQ](https://handlebarsjs.com/) 
 - create all interface development files in the **views** folder with extension **.hbs**
-- example use import .hbs components: **{{>views/header}} , {{>views/footer}}** ... etc 
+- example use import .hbs components: 
+
+```html
+<body>
+  {{>views/header}}
+  <main>...</main>
+  {{>views/footer}}
+</body>
+```
 - each creation/delete web-site/app page must be accompanied by a restart of the server:
+
 ```shell
 npm run dev
 ```
