@@ -47,7 +47,7 @@ npm run clear
   {{>views/footer}}
 </body>
 ```
-- сreation/deletion - site pages must be accompanied restarting devServer:
+- сreation or deletion - site pages must be accompanied restarting devServer:
 
 ```shell
 npm run dev
