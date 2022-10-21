@@ -137,6 +137,7 @@ module.exports = {
   resolve: {
     alias: {
       '@img': path.join(__dirname, 'src', 'img'),
+      '@src': path.join(__dirname, 'src')
     },
   },
 };
