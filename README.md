@@ -77,4 +77,4 @@ npm run dev
 </svg>
 ```
 
-- * To use a ready-made sprite map, you need to install the CopyWebpackPlugin extension, which will copy the sprite map to dist as static and use it
+> To use a ready-made sprite map, you need to install the CopyWebpackPlugin extension, which will copy the sprite map to dist as static and use it
