@@ -68,8 +68,8 @@ npm run dev
 ## How use Sprites?
 
 - add **sprites** in directory **/svg/**
-- all-sprites names must have **#sprite-{name}**
-- true path to sprite **svg/spritemap.svg**
+- use the following hash-name **#sprite-{file-name}**
+- correct path to sprite **svg/spritemap.svg**
 
 ```html
 <svg class="icon">
