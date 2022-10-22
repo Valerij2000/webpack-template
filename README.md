@@ -63,6 +63,9 @@ npm run dev
 <img src="@img/banner.png" alt="">
 ```
 
+> This image will be converted to **webp** format **(banner.png --> banner.webp)** automatically
+> This **img tag** will be transformation in **picture tag**
+
 ---
 
 ## How use Sprites?

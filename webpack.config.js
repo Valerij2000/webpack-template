@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -42,7 +43,8 @@ module.exports = {
       output: {
         filename: 'svg/spritemap.svg',
       }
-    })
+    }),
+    new ImageminWebpWebpackPlugin(),
   ],
   module: {
     rules: [{
