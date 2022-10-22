@@ -77,4 +77,4 @@ npm run dev
 </svg>
 ```
 
-> If you apply custom sprite map, you need to install the CopyWebpackPlugin extension, which will copy the sprite map to dist as static and use it
+> If you apply custom sprite map, you need to install the **CopyWebpackPlugin** extension, which will copy the sprite map to dist as static and use it
