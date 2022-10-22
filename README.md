@@ -76,3 +76,5 @@ npm run dev
   <use xlink:href="svg/spritemap.svg#sprite-icon"></use>
 </svg>
 ```
+
+- * To use a ready-made sprite map, you need to install the CopyWebpackPlugin extension, which will copy the sprite map to dist as static and use it
