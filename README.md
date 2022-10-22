@@ -62,3 +62,17 @@ npm run dev
 ```html
 <img src="@img/banner.png" alt="">
 ```
+
+---
+
+## How use Sprites?
+
+- add **sprites** in directory **/svg/**
+- all-sprites names must have **#sprite-{name}**
+- true path to sprite **svg/spritemap.svg**
+
+```html
+<svg class="icon">
+  <use xlink:href="svg/spritemap.svg#sprite-icon"></use>
+</svg>
+```
