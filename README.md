@@ -30,7 +30,7 @@ npm run clear
 
 - src/styles/base ... this project service **scss** files
 - src/styles/partials ... this project custom **scss** files
-- src/js/app.js ... this general application **JS** file
+- src/js/app.js ... this general application **js** file
 
 ---
 
