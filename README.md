@@ -28,8 +28,9 @@ npm run clear
 
 ## Project structure
 
-- src/styles/base ... this project service **scss** files
-- src/styles/partials ... this project custom **scss** files
+- src/styles/base ... this service **scss** files
+- src/styles/partials ... this custom **scss** files
+> **Attention!** The files in this folder are connected **automatically**, if you have **connection problems**, update (resave) the file src/styles/index.scss
 - src/js/app.js ... this general application **js** file
 
 ---
