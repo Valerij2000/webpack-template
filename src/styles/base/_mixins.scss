@@ -27,10 +27,37 @@
   grid-template-columns: repeat(auto-#{$type}, minmax($min, $max));
 }
 
+// Flex gap
+@mixin flex-gap($gap, $row: true) {
+  $margin: math.div($gap, 2);
+  $transform: -$margin;
+
+  @if $row {
+    margin-left: $transform;
+    margin-right: $transform;
+  }
+
+  @else {
+    margin-top: $transform;
+    margin-bottom: $transform;
+  }
+
+  >* {
+    @if $row {
+      margin-left: $margin;
+      margin-right: $margin;
+    }
+
+    @else {
+      margin-top: $margin;
+      margin-bottom: $margin;
+    }
+  }
+}
+
 // Adaptive property 
-// ? USE FAQ:
-// @include adaptiveValue("font-size", 90, 20);
-// @include adaptiveValue("font-size", 90, 20, 1920, 320); where 1920 & 320 - breakpoints;
+// ? @include adaptiveValue("font-size", 90, 20);
+// ? @include adaptiveValue("font-size", 90, 20, 1920, 320); where 1920 & 320 - breakpoints;
 @mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
   @if ($widthFrom==$containerWidth and $maxWidthContainer==0) {
     $widthFrom: $maxWidth;
