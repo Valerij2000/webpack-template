@@ -73,8 +73,8 @@ npm run dev
 
 ```html
 <picture>
-  <source media="(max-width: 991px)" srcset="assets/mobile.png"><img class="img" src="assets/image.png" alt=""
-    aria-hidden="true">
+  <source media="(max-width: 991px)" srcset="@img/mobile.png">
+  <img class="img" src="@img/image.png" alt="">
 </picture>
 ```
 
