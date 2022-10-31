@@ -69,6 +69,19 @@ npm run dev
 
 ---
 
+## How use picture resize?
+
+```html
+<picture>
+  <source media="(max-width: 991px)" srcset="assets/mobile.png"><img class="img" src="assets/image.png" alt=""
+    aria-hidden="true">
+</picture>
+```
+
+> This **png|jpg|gif extension** will be transformation in **webp**
+
+---
+
 ## How use Sprites?
 
 - add **sprites** in directory **/svg/**
