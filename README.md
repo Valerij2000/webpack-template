@@ -78,7 +78,7 @@ npm run dev
 </picture>
 ```
 
-> This **png|jpg|gif extension** will be transformation in **webp**
+> This **.png | .jpg | .gif extension** will be transformation in **webp**
 
 ---
 
