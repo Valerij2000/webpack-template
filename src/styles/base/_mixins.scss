@@ -8,18 +8,6 @@
   height: 100vh;
 }
 
-// Rem
-@function rem($px) {
-  $result: math.div($px, 16) + rem;
-  @return $result;
-}
-
-// Em
-@function em($px, $current: 16) {
-  $result: math.div($px, $current) + em;
-  @return $result;
-}
-
 // Grids
 @mixin gridCards($type: fit, $min: 280px, $max: 1fr, $gap: 30px) {
   display: grid;
